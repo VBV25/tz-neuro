@@ -1,0 +1,203 @@
+* {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+html,
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(45, 45, 45);
+}
+/*-----------------------------------------------------------*/
+#square {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 50px;
+  height: 50px;
+  border: 100px solid skyblue;
+  border-image: linear-gradient(to right top, blue, skyblue, blue);
+  border-image-slice: 2;
+  animation-duration: 5s;
+  animation-timing-function: cubic-bezier(0.4, 0.8, 0.8, 0.4);
+  animation-iteration-count: 1;
+}
+.animation-square {
+  animation-name: square1;
+}
+@keyframes square1 {
+  0% {
+    width: 50px;
+    height: 50px;
+  }
+  40% {
+    width: 100px;
+    height: 100px;
+  }
+  50% {
+    width: 200px;
+    height: 200px;
+    transform: rotateZ(500deg) rotateY(230deg);
+  }
+  60% {
+    width: 100px;
+    height: 100px;
+  }
+  100% {
+    width: 50px;
+    height: 50px;
+  }
+}
+/*-------------------------------------------------*/
+#circle-btn {
+  box-sizing: content-box;
+  position: absolute;
+  z-index: 5;
+  top: 15%;
+  right: 30%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: gold;
+    box-shadow: 0px -200px 100px -120px crimson inset;
+    animation: background1 7s infinite alternate;
+  }
+  @keyframes background1 {
+    50% {
+      background: skyblue;
+      box-shadow: 0px -200px 100px -100px yellowgreen inset;
+    }
+  }
+  .circle-puls {
+    display: block;
+    position: relative;
+    z-index: -1;
+    transform-origin: center, center;
+    animation: background2 3s infinite alternate;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px -5px rgb(200, 17, 93) inset;
+  }
+  @keyframes background2 {
+    50% {
+      box-shadow: 0px 0px 10px -5px rgb(224, 191, 7) inset;
+    }
+  }
+}
+.circle-active {
+  .circle {
+    animation: background1 7s infinite alternate, resizeCircle1 0.5s 2 alternate !important;
+  }
+  .circle-puls {
+    animation: background2 3s infinite alternate, resizeCircle2 0.4s 2 alternate !important;
+  }
+}
+@keyframes resizeCircle2 {
+  50% {
+    transform: scale(6.5);
+  }
+}
+@keyframes resizeCircle1 {
+  50% {
+    transform: scale(1.1);
+  }
+}
+/*-------------------------------------------------------------------------*/
+#rectangle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+  top: 50%;
+  left: 50%;
+  .rectangle1,
+  .rectangle2,
+  .rectangle3 {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+    height: 300px;
+
+    transform: matrix(1.3, 0, -1.1, 0.2, 0, 0);
+  }
+  .rectangle1 {
+    background-color: green;
+    bottom: -100px;
+  }
+  .rectangle2 {
+    background-color: rgba(0, 128, 0, 0.434);
+    bottom: -100px;
+  }
+  .rectangle3 {
+    background-color: rgba(0, 128, 0, 0.153);
+    bottom: -100px;
+  }
+}
+.rectangle-active {
+  .rectangle1 {
+    animation: rectangle1 2s 1;
+  }
+  .rectangle2 {
+    animation: rectangle2 2s 1;
+  }
+}
+
+@keyframes rectangle1 {
+  50% {
+    bottom: 0px;
+  }
+}
+@keyframes rectangle2 {
+  50% {
+    bottom: -50px;
+  }
+}
+
+/*-----------------------------------------------------------------------*/
+#triangle {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  margin-left: -100px;
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 200px solid rgb(96, 6, 125);
+  animation: triangle1 3s 1;
+  transform: scale(1, 1);
+  transition: all 1s ease 0s;
+}
+@keyframes triangle1 {
+  0% {
+    transform: scale(1, -1);
+  }
+  100% {
+    transform: scale(1, 1);
+    bottom: 10px;
+  }
+}
+.triangle-active {
+  transform: scale(1, -1) !important;
+  bottom: 0px !important;
+  top: 10px;
+}
+@keyframes triangle2 {
+  0% {
+    transform: scale(1, 1);
+  }
+  100% {
+    transform: scale(1, -1);
+    top: 10px;
+  }
+}
