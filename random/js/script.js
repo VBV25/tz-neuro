@@ -19,7 +19,7 @@ function random(min, max) {
   return number
 }
 function printCube(num) {
-  for (var i = 0; i <= num; i++) {
+  for (var i = 0; i < num; i++) {
     render(toHTMLCube)
   }
 }

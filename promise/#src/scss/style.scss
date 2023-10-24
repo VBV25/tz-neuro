@@ -12,5 +12,48 @@ body {
   background-color: rgb(195, 195, 195);
   padding: 50px;
 }
+.btn-group {
+  margin-bottom: 20px;
+  display: flex;
+  button {
+    display: block;
+    padding: 10px 20px;
+    margin: 5px;
+  }
+}
 
 //------------------------
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+}
+
+.card {
+  padding: 15px 10px;
+  min-width: 150px;
+  width: max-content;
+  min-height: 100px;
+  border-radius: 15px;
+  background-color: white;
+  &__img {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+  }
+  &__name,
+  &__surname {
+    display: block;
+    width: max-content;
+    height: max-content;
+    margin: 2px auto;
+  }
+  &__email {
+    display: block;
+    width: max-content;
+    height: max-content;
+    margin: 5px auto;
+  }
+}
