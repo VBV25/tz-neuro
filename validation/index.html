@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Валлидация</title>
+</head>
+
+
+<body>
+  <section class="form-block">
+    <form class="form-block__container container">
+      <!--'name'-->
+      <label for="name" class="form-block__name">Имя:
+        <input type="text" placeholder="Введите имя" name="name" tabindex="1" required>
+        <div class="form-block__massage-err"></div>
+      </label>
+      <!--'phone'-->
+      <label for="phone" class="form-block__phone">Телефон:
+        <input type="tel" placeholder="Введите номер телефона" name="phone" tabindex="2" required>
+        <div class="form-block__massage-err"></div>
+      </label>
+      <!--'password'--->
+      <label for="password" class="form-block__password">Пароль:
+        <input type="password" placeholder="Введите пароль" name="password" tabindex="3" required>
+        <div class="form-block__massage-err"></div>
+      </label>
+      <!--'сonfirm password'-->
+      <label for="сonfirm-password" class="form-block__сonfirm-password">Подтвердите пароль:
+        <input type="password" placeholder="Введите пароль" name="сonfirm-password" tabindex="4" required>
+        <div class="form-block__massage-err"></div>
+      </label>
+      <!--'button'-->
+      <button class="form-block__btn" id="form-block-btn" type="button" tabindex="5">Отправить</button>
+
+
+
+    </form>
+  </section>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

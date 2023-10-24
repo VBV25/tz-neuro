@@ -1,0 +1,81 @@
+@import "mixin";
+
+$smokeColor: rgb(204, 204, 204);
+$goldColor: #b4977b;
+$blueColor: rgb(58, 69, 116);
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$closeColor: rgb(156, 46, 46);
+
+* {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-color: rgb(58, 58, 58);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//------------------------
+
+.form-block {
+  width: 40%;
+  min-width: 320px;
+  &__container {
+    width: 100%;
+    height: max-content;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: $smokeColor;
+  }
+  //----ФОРМА-ОТПРАВКИ-НА СТРАНИЦЕ----
+  //подпись
+  label {
+    @include fontSize(1.4vw, 120%, 500);
+    display: flex;
+    flex-direction: column;
+    input {
+      width: 100%;
+      height: max-content;
+      margin-top: 4px;
+      border: 1px solid $smokeColor;
+      padding: 10px;
+      @include fontSize(1.2vw, 120%, 400);
+      &:hover {
+        border-color: $goldColor;
+      }
+      &:focus {
+        border-color: $blueColor;
+      }
+    }
+  }
+  &__btn {
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    padding: 10px;
+    border: unset;
+    color: $whiteColor;
+    background-color: $blueColor;
+  }
+  //---ОКНО-СООБЩЕНИЯ-ВАЛИДАЦИИ---
+  &__massage-err {
+    @include fontSize(16px, 18px, 500);
+    width: 100%;
+    min-height: 18px;
+    height: max-content;
+    margin: 2px 0px 5px;
+    text-align: center;
+    color: $closeColor;
+  }
+}

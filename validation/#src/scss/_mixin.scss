@@ -1,0 +1,8 @@
+//параметры шрифтов
+@mixin fontSize($fs: 16px, $liHe: 24px, $fWe: 400, $fontFamily: sans-serif) {
+  font-size: $fs;
+  font-weight: $fWe;
+  line-height: $liHe;
+  font-style: normal;
+  font-family: $fontFamily;
+}
