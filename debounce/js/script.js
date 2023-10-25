@@ -2,24 +2,35 @@ const btn = document.getElementById('btn');
 const sideBarFontsBlock = document.getElementById('sideBarFontsBlock')
 const sideBarColorBlock = document.getElementById('sideBarColorBlock')
 const sideBarThemesBlock = document.getElementById('sideBarThemesBlock')
+
+//поочередное открытие списков
 function visibleBlock() {
   sideBarFontsBlock.classList.toggle('open-block')
   setTimeout(() => {
     sideBarColorBlock.classList.toggle('open-block')
-  }, 1010);
+  }, 400)
   setTimeout(() => {
     sideBarThemesBlock.classList.toggle('open-block')
-  }, 2010);
+  }, 800)
 }
-/*
-let debFn = function debounce(f, ms) {
-  f, ms
+
+// Функция debounce 
+function debounce(func, delay) {
+  let timer;
+  return () => {
+    clearTimeout(timer)
+    timer = setTimeout(func, delay)
+  };
 }
-function debounce(f, ms) {
-  f, ms
-}
-btn.addEventListener('click', debFn(visibleBlock(), 1000))
-*/
-btn.onclick = () => {
+
+// Функция, которая будет запускаться при клике на элемент
+const handleClick = debounce(() => {
   visibleBlock()
+}, 1000)
+
+
+btn.onclick = () => {
+  handleClick()
 }
+
+
