@@ -1,4 +1,5 @@
 "use strict";
+
 class SliderProt {
   constructor(init) {
     this.slideBlock = init.querySelectorAll('.slider__slide')
@@ -54,4 +55,109 @@ function activeSlider(el) {
 }
 activeSlider(slider)
 activeSlider(slider2)
+
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+
+class SliderNew {
+  constructor(init) {
+    this.slide = init.querySelectorAll('.new-slider__slide')
+    this.slideWrapper = init.querySelectorAll('.new-slider__wrapper')
+    this.slideContainer = init.querySelectorAll('.new-slider__container')
+    this.prevBtn = init.querySelectorAll('.btn-prev')
+    this.nextBtn = init.querySelectorAll('.btn-next')
+    this.slideBtn = init.querySelectorAll('.new-slider__btn')
+  }
+  slideFn() {
+    // определяем активный слайд
+    let activeSlide = document.querySelector('.active-slide')
+    const searchActiveSlideFn = () => {
+      activeSlide = document.querySelector('.active-slide')
+    }
+
+    //активация кнопок в зависимости от активного слайда
+    const slidePosition = () => {
+      let firstSlide = this.slideWrapper[0].firstElementChild
+      let lastSlide = this.slideWrapper[0].lastElementChild
+
+      let prevBtnDisabledFn = (meaning) => {
+        this.prevBtn.forEach(el => {
+          el.disabled =
+            meaning;
+        })
+      }
+      let nextBtnDisabledFn = (meaning) => {
+        this.nextBtn.forEach(el => {
+          el.disabled =
+            meaning;
+        })
+      }
+
+      if (firstSlide.classList.contains('active-slide')) {
+        prevBtnDisabledFn(true)
+        nextBtnDisabledFn(false)
+      }
+      else if (lastSlide.classList.contains('active-slide')) {
+        prevBtnDisabledFn(false)
+        nextBtnDisabledFn(true)
+      }
+      else {
+        prevBtnDisabledFn(false)
+        nextBtnDisabledFn(false)
+      }
+    }
+    slidePosition()
+
+    //листаем слайды
+
+    // Функция debounce 
+    function debounce(func, delay) {
+      let timer;
+      return () => {
+        clearTimeout(timer)
+        timer = setTimeout(func, delay)
+      };
+    }
+
+    const nextSlideFn = debounce(() => {
+      searchActiveSlideFn()
+      activeSlide.classList.remove('active-slide')
+      activeSlide.nextElementSibling.classList.add('active-slide')
+      slidePosition()
+      this.slideWrapper[0].style.left = (this.slideWrapper[0].offsetLeft - this.slideWrapper[0].lastElementChild.offsetWidth) + 'px'
+    }, 300)
+
+    const prevSideFn = debounce(() => {
+      searchActiveSlideFn()
+      activeSlide.classList.remove('active-slide')
+      activeSlide.previousElementSibling.classList.add('active-slide')
+      slidePosition()
+      this.slideWrapper[0].style.left = (this.slideWrapper[0].offsetLeft + this.slideWrapper[0].lastElementChild.offsetWidth) + 'px'
+    }, 300)
+
+
+    this.slideBtn.forEach(el => {
+      el.onclick = () => {
+        if (el.classList.contains('btn-next')) {
+          nextSlideFn()
+        }
+        if (el.classList.contains('btn-prev')) {
+          prevSideFn()
+        }
+      }
+    })
+  }
+}
+
+function activeSliderNew(el) {
+  let newSlider = new SliderNew(el)
+  newSlider.slideFn();
+}
+activeSliderNew(slider3)
+
 

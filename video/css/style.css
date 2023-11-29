@@ -1,11 +1,13 @@
 * {
   margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px; }
+  padding: 0px 0px 0px 0px;
+}
 
 html,
 body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 body {
   background-color: #303030;
@@ -21,7 +23,8 @@ body {
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+}
 
 span {
   z-index: 100;
@@ -29,4 +32,10 @@ span {
   right: 0px;
   color: white;
   font-size: 30px;
-  font-weight: 900; }
+  font-weight: 900;
+}
+
+button {
+  padding: 5px;
+  margin: 5px;
+}
